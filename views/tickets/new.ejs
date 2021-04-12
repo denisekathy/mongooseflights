@@ -7,17 +7,19 @@
     <title>Document</title>
 </head>
 <body>
-    <h2>New Ticket</h2>
-  
+    <label>Tickets</label>
+    <input name="seat"  required pattern="[A-F][1-9]\d?">
 <br><br>
-      <form id="add-a-ticket" action="/tickets" method="POST">
+      <form id="add-a-ticket" action="/flights/<%= flight._id %>/tickets" method="POST">
         <label>Seat</label>
-        <input name="seat" type="text" required pattern="[A-F][1-9]\d?">
-       
+        
+        <input type="text" name="seat">
         <label>Price</label>
         <input type="text" name="price">
-       
+        <label>Flight</label>
+        <input type="text" name="flight">
         <input type="submit" value="Add Ticket">
       </form>
+     
 </body>
 </html>
