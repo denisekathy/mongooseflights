@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=`, initial-scale=1.0">
+	<link rel='stylesheet' href='/stylesheets/style.css' />
+	<title>Mongoose Flights</title>
+</head>
+<body>
+	<nav>
+		<a href="http://localhost:3000/flights/">ALL FLIGHTS 
+		</a>
+		<a href="http://localhost:3000/flights/new">ADD FLIGHT</a>
+	</nav>
+    <h2>Mongoose Flights</h2>
+<form action="/flights" method="POST">
+	<label>Airline:
+	  <input type="text" name="Airline">
+	</label><br>
+	<label>Flight:
+	  <input type="text" name="flightNo">
+	</label><br>
+	<label>Airport:
+	  <select name="airport">
+	    <option value="AUS">AUS</option>
+	    <option value="DFW">DFW</option>
+	    <option value="DEN">DEN</option>
+	    <option value="LAX">LAX</option>
+	    <option value="SAN">SAN</option>
+	  </select>
+	</label><br>
+	<label for="departs">Departs:
+
+<input type="datetime-local" id="meeting-time"
+       name="departs" value="2021-04-01T19:30"
+       min="2021-04-01T00:00" max="2022-04-01T00:00">
+	</label><br>
+<input type="submit" value="Add Flight">
+
+</body>
+</html>

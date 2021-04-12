@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="/stylesheets/style.css" />
+    <title>Document</title>
+  </head>
+  <nav>
+    <a href="http://localhost:3000/flights/">ALL FLIGHTS </a>
+    <a href="http://localhost:3000/flights/new">ADD FLIGHT</a>
+  </nav>
+  <body>
+    <h1>Mongoose Flight</h1>
+    <section id="show-page">
+      <div>Airline:</div>
+      <td><%= flight.airline %></td>
+      <div>Airport:</div>
+      <td><%= flight.airport %></td>
+      <div>FlightNo:</div>
+      <td><%= flight.flightNo %></td>
+      <div>Departs:</div>
+      <td><%= flight.departs %></td> 
+      <div>Destinations:</div>
+      <td><%= flight._id.destinations %></td>
+      <br><br>
+      <section>
+<form id="add-ticket-to-flight" action="/tickets/new" method="GET">
+  <button type="submit">Add A Ticket</button>
+</form>
+
+<% if(tickets.length) { %>
+  <table>
+    <thead>
+      <tr>
+        <th>Seat</th>
+        <th>Price</th>
+      </tr>
+    </thead>
+    <tbody>
+      <% tickets.forEach(function(s){ %>
+      <tr>
+        
+        <td><%= s.seat %></td>
+        <td><%= s.price %></td>
+      </tr>
+      <% });%>
+    </tbody>
+  </table>
+  <% } else { %>
+  <h3>No New Tickets</h3>
+ <% } %>
+    </section>
+    <br /><br />
+    <h2>Add A Destination</h2>
+    <form
+      id="add-destination-form"
+      method="POST"
+      action="/flights/<%= flight._id %>/destinations"
+    >
+      <label
+        >Airport:
+        <select name="airport">
+          <option value="AUS">AUS</option>
+          <option value="DFW">DFW</option>
+          <option value="DEN">DEN</option>
+          <option value="LAX">LAX</option>
+          <option value="SAN">SAN</option>
+        </select>
+<br>
+        <label
+          >Arrival
+          <input
+            type="datetime-local"
+            id="meeting-time"
+            name="date"
+            value="2021-04-01T19:30"
+            min="2021-04-01T00:00"
+            max="2022-04-01T00:00"
+          /> </label
+        ><br />
+      </label>
+      <input type="submit" value="Add Destination"/>
+      <br />
+    </form>
+
+   
+     <% if(flight.destinations.length) { %>
+    <table>
+      <thead>
+        <tr>
+          <th>Airport</th>
+          <th>Arrival</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% flight.destinations.forEach(function(d){ %>
+        <tr>
+          <td><%= d.createdAt.toLocaleDateString() %></td>
+          <td><%= d.airport %></td>
+          <td><%= d.arrival %></td>
+          
+        </tr>
+        <% });%>
+      </tbody>
+    </table>
+    <% } else { %>
+    <h3>No New Destinations</h3>
+   <% } %>
+  </section>
+  
+  </body>
+</html>
+
